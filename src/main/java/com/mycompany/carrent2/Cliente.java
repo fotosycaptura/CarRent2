@@ -136,4 +136,11 @@ public class Cliente {
             }
             return (RutDigito);
         }
+    
+    @Override
+    public String toString() {
+        return "Cédula: " + getCedula() + "\t" +
+                "Nombre: " + getNombre() + "\t" +
+                "Estado: " + getVigente();
+    }
 }

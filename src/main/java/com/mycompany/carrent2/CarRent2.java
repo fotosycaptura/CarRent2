@@ -20,6 +20,7 @@ public class CarRent2 {
         //Se genera una nueva instancia de un cliente
         //Por default el nuevo cliente está vigente
         Cliente c = new Cliente("12345678-5", "Juanito Perez");
+        System.out.println(c);
         
         // GENERO UNA INSTANCIA DE FECHA 
         GregorianCalendar f = new GregorianCalendar();
@@ -28,7 +29,7 @@ public class CarRent2 {
         // v.setCondicion('H');
         
         // GENERAMOS UNA NUEVA INSTANCIA DE ARRIENDO
-        new Arriendo(10, f, 5, v);
+        new Arriendo(10, f, 5, v, c);
         
         // DESCOMENTAR SI DESEA GATILLAR LA VALIDACIÓN DEL ARRIENDO
         // SE INGREDA UN VEHÍCULO QUE NO ESTÉ DISPONIBLE
