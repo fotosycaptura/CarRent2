@@ -110,6 +110,14 @@ public class Vehiculo {
         this.condicion = condicion;
     }
     
+    public void AsignarVehiculoEnMantencion(){
+        if (this.condicion == 'A'){
+            throw new IllegalArgumentException("No es posible enviar a mantención un vehículo arrendado");
+        }
+
+        this.condicion = 'M';
+    }
+    
     @Override
     public String toString() {
         return "PATENTE: " + getPatente() + "\t" +
