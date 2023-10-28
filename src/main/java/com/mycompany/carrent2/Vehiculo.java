@@ -18,6 +18,7 @@ public class Vehiculo {
     //A: Arrendado
     //M: Mantención
     private char condicion;
+    private int precioArriendo;
     
     public Vehiculo(String patente, String marca, String modelo, int anho) {
         setPatente(patente);
@@ -98,6 +99,17 @@ public class Vehiculo {
         return condicion;
     }
     
+    public int getPrecioArriendo(){
+        return this.precioArriendo;
+    }
+    
+    public void setPrecioArriendo(int PrecioArriendo){
+        if (PrecioArriendo < 0){
+            throw new IllegalArgumentException("El precio no es válido");
+        }
+        
+        this.precioArriendo = PrecioArriendo;
+    }
 
     /**
      * @param condicion the condicion to set

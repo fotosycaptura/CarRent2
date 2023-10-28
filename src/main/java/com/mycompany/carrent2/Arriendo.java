@@ -11,14 +11,14 @@ import java.util.GregorianCalendar;
  * @author Tom
  */
 public class Arriendo {
-    private int numero;
+    private int numero; //Número del arriendo
     private GregorianCalendar fechaArriendo;
     private int dias;
     private Vehiculo vehiculo;
     private Cliente cliente;
     // OJO QUE FALTA LA RELACIÓN CON EL CLIENTE
     
-    public Arriendo(int numero, GregorianCalendar fechaArriendo, int dias, Vehiculo vehiculo) {
+    public Arriendo(int numero, GregorianCalendar fechaArriendo, int dias, Vehiculo vehiculo, Cliente cliente) {
         setNumero(numero);
         setFechaArriendo(fechaArriendo);
         setDias(dias);

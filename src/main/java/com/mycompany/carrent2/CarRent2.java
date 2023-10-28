@@ -29,8 +29,9 @@ public class CarRent2 {
         // v.setCondicion('H');
         
         // GENERAMOS UNA NUEVA INSTANCIA DE ARRIENDO
-        new Arriendo(10, f, 5, v, c);
-        
+        Arriendo a = new Arriendo(10, f, 5, v, c);
+        System.out.println(a.getVehiculo().toString());
+               
         // DESCOMENTAR SI DESEA GATILLAR LA VALIDACIÓN DEL ARRIENDO
         // SE INGREDA UN VEHÍCULO QUE NO ESTÉ DISPONIBLE
         // v.setCondicion('A');
