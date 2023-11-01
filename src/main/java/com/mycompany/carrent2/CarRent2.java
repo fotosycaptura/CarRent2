@@ -11,6 +11,7 @@ import java.util.GregorianCalendar;
 /**
  *
  * @author Tom
+ * Clase entregada para trabajar en ella por el profesor
  * Modificado por integrantes del grupo 2:
  * Xavier Fuentes
  * Carlos Anch
@@ -20,6 +21,8 @@ import java.util.GregorianCalendar;
 public class CarRent2 {
 
     public static void main(String[] args) {
+        System.out.println("**********************************************************************************");
+        System.out.println("                                Caso 1 todo ordenadito");
         System.out.println("**********************************************************************************");
         //*************************** Arriendo 1 de forma correcta con su vehículo y cliente respectivo********************
         Vehiculo v = new Vehiculo("XX-YY-23", "KIA", "HGF", 2015);
@@ -34,11 +37,15 @@ public class CarRent2 {
         // DESCOMENTAR SI DESEA GATILLAR EL ERROR DE VALIDACIÓN DE CONDICIÓN
         // v.setCondicion('H');
         // GENERAMOS UNA NUEVA INSTANCIA DE ARRIENDO
+        /* Inicialmente el constructor de arriendo poseía una validación para "ingresar el arriendo".
+        Esta validación se movió a "IngresarArriendo" debido a que aparece en la rúbrica de evaluación.
+        */
         Arriendo a1 = new Arriendo(10, f, 5, v, c);
         
         //se ingresa el arriendo
         a1.IngresarArriendo();
         System.out.println("Detalle del vehículo arrendado: " + a1.getVehiculo().toString());
+        
         //*************************** Se realiza el proceso de devolución *************************************************
         //Se genera vehículo a devolver para la validación posterior
         Vehiculo autoDevuelto = new Vehiculo("XX-YY-23", "KIA", "HGF", 2015);
@@ -71,34 +78,62 @@ public class CarRent2 {
         System.out.println("");
         
         //*************************** Devolución FALLIDA con su vehículo que no corresopnde ********************
+        System.out.println("**********************************************************************************");
+        System.out.println("                      Caso 2 devolución de vehículo que no es");
+        System.out.println("**********************************************************************************");
+        //*************************** Arriendo 1 de forma correcta con su vehículo y cliente respectivo********************
+        Vehiculo v2 = new Vehiculo("XX-YY-99", "VMW", "Barato", 2023);
+        System.out.println("Vehículo generado: " + v2);
+        //Se genera una nueva instancia de un cliente
+        //Por defecto el nuevo cliente está vigente desde el constructor
+        Cliente c2 = new Cliente("33333333-3", "Juanito Rolando");
+        System.out.println("Cliente generado: " + c2);
+        
+        // GENERO UNA INSTANCIA DE FECHA 
+        f = new GregorianCalendar();
+        // DESCOMENTAR SI DESEA GATILLAR EL ERROR DE VALIDACIÓN DE CONDICIÓN
+        // v.setCondicion('H');
+        // GENERAMOS UNA NUEVA INSTANCIA DE ARRIENDO
+        /* Inicialmente el constructor de arriendo poseía una validación para "ingresar el arriendo".
+        Esta validación se movió a "IngresarArriendo" debido a que aparece en la rúbrica de evaluación.
+        */
+        Arriendo a2 = new Arriendo(8, f, 4, v2, c2);
+        
+        //se ingresa el arriendo
+        a2.IngresarArriendo();
+        System.out.println("Detalle del vehículo arrendado: " + a2.getVehiculo().toString());
+        
         //se genera una devolución fallida
         System.out.println("**********************************************************************************");
         System.out.println("Se genera el proceso de una devolución fallida: ");
         Vehiculo autoDevueltoConFallas = new Vehiculo("XX-YY-25", "KIAdo", "HGF", 2017);
         fechaDevolucion = new GregorianCalendar();
-        fechaDevolucion.add(fechaDevolucion.DAY_OF_MONTH, a1.getDias());
+        fechaDevolucion.add(fechaDevolucion.DAY_OF_MONTH, a2.getDias());
        
         //Se procede con la validación y si es correcto, la devolución.
-        if (a1.generarDevolucion(autoDevueltoConFallas, fechaDevolucion)){
+        if (a2.generarDevolucion(autoDevueltoConFallas, fechaDevolucion)){
             System.out.println("La devolución se realizó correctamente");
         }else{
             System.out.println("No se pudo realizar la devolución. Compruebe que sea efectivamente el mismo vehículo.");
         }
+        System.out.println("");
         
-        //*************************** Arriendo 2 FALLIDO con su vehículo y/o cliente deshabilitado********************
+        //*************************** Arriendo 3 FALLIDO con su vehículo y/o cliente deshabilitado********************
         System.out.println("**********************************************************************************");
-        Vehiculo v2 = new Vehiculo("XX-YY-24", "Toyota", "CROSS", 2023);
+        System.out.println("                   Caso 3 Vehículo en mantención/Cliente deshabilitado");
+        System.out.println("**********************************************************************************");
+        Vehiculo v3 = new Vehiculo("XX-YY-24", "Toyota", "CROSS", 2023);
         v2.setCondicion('M');
-        System.out.println("Vehículo generado (asignado a mantención): " + v2);
+        System.out.println("Vehículo generado (asignado a mantención): " + v3);
         //Se genera una nueva instancia de un cliente
         //Por defecto el nuevo cliente está vigente desde el constructor
-        Cliente c2 = new Cliente("22222222-2", "Jhon Titor 2");
-        c2.DeshabilitarCliente();
-        System.out.println("Cliente generado (deshabilitado): " + c2);
-        Arriendo a2 = new Arriendo(11, f, 5, v2, c2);
+        Cliente c3 = new Cliente("22222222-2", "Jhon Titor 2");
+        c3.DeshabilitarCliente();
+        System.out.println("Cliente generado (deshabilitado): " + c3);
+        Arriendo a3 = new Arriendo(11, f, 5, v3, c3);
         
-        //Se ingresa el arriendo. O eso debería, pero se lanza una excepción porque el vehículo generado está en mantención. Línea 52
-        //Además el cliente está deshabilitado línea 57
-        a2.IngresarArriendo();
+        //Se ingresa el arriendo. O eso debería, pero se lanza una excepción porque el vehículo generado está en mantención. 
+        //Además el cliente está deshabilitado
+        a3.IngresarArriendo();
     }
 }
