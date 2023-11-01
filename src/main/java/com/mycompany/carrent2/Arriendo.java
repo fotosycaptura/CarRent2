@@ -6,6 +6,8 @@ package com.mycompany.carrent2;
 
 import java.util.GregorianCalendar;
 import java.text.SimpleDateFormat;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -50,6 +52,9 @@ public class Arriendo {
         if (!validarArriendo()) {
             throw new IllegalArgumentException("VEHICULO Ó CLIENTE INVÁLIDOS. \nArriendo NO ingresado");
         }
+        
+        //La validación es correcta, por lo que se ingresa cambia el estado del vehículo a Arrendado
+        vehiculo.setCondicion('A');
         
         return true;
     }
@@ -170,15 +175,22 @@ public class Arriendo {
     }
     /**
      * Encargado de setear una instancia de Devolucion
+     * Setea la condición del vehículo en Disponible
      * @param vehiculo
      * @param fechaDevolucion 
      */
     private void setDevolucion(Vehiculo vehiculo, GregorianCalendar fechaDevolucion){
         this.devolucion = new Devolucion(vehiculo, fechaDevolucion);
+        //Se cambia la condición del vehículo a disponible
+        vehiculo.setCondicion('D');
     }
     
     public String getDevolucion(){
         return this.devolucion.toString() + "\nCliente: " + cliente.toString();
+    }
+    
+    private int obtenerMonto(){
+        return getVehiculo().getPrecioArriendo() * getDias();
     }
     
     /**
@@ -208,10 +220,9 @@ public class Arriendo {
         SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy");
         fmt.setCalendar(getFechaArriendo());
         String fechaFormateada = fmt.format(getFechaArriendo().getTime());
-        int totalAPagar = getVehiculo().getPrecioArriendo() * getDias();
 
         //getDias() * 
-        System.out.println(fechaFormateada + "      " + this.cliente.getCedula() + "/" + this.cliente.getNombre() + "       " + getDias() + " días" + "          $" + totalAPagar);
+        System.out.println(fechaFormateada + "      " + this.cliente.getCedula() + "/" + this.cliente.getNombre() + "       " + getDias() + " días" + "          $" + obtenerMonto());
         for(int i=0; i < 80; i++){
             System.out.print("-");
         }
