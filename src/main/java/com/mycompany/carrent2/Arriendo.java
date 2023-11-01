@@ -22,6 +22,7 @@ public class Arriendo {
     private int dias;
     private Vehiculo vehiculo;
     private Cliente cliente;
+    private Devolucion devolucion;
     
     /**
      * Constructor
@@ -138,6 +139,7 @@ public class Arriendo {
      * Si vehículo está Disponible y cliente Vigente
      * Entonces se retorna true
      * En caso contrario false
+     * Metodo llamado desde ingresarArriendo
      * @return 
      */
     private boolean validarArriendo() {
@@ -159,12 +161,22 @@ public class Arriendo {
      */
     public Boolean generarDevolucion(Vehiculo v, GregorianCalendar fechaDevolucion){
         //Se debe de validar la fecha de devolución que sea mayor que la fecha de arriendo
+        //Se deve de validar que el vehículo a devolver corresponda al mismo con el que se inició el arriendo del mismo.
+        
         setDevolucion(v, fechaDevolucion);
         return true;
     }
+    /**
+     * Encargado de setear una instancia de Devolucion
+     * @param vehiculo
+     * @param fechaDevolucion 
+     */
+    private void setDevolucion(Vehiculo vehiculo, GregorianCalendar fechaDevolucion){
+        this.devolucion = new Devolucion(vehiculo, fechaDevolucion);
+    }
     
-    public Devolucion setDevolucion(Vehiculo vehiculo, GregorianCalendar fechaDevolucion){
-        return (new Devolucion(vehiculo, fechaDevolucion));
+    public String getDevolucion(){
+        return this.devolucion.toString() + "\nCliente: " + cliente.toString();
     }
     
     /**
@@ -179,11 +191,13 @@ public class Arriendo {
             System.out.print("=");
         }
         System.out.println("");
-        System.out.println("Ticket Arriendo de Vehículo");
-        System.out.println("Número de Arriendo: " + getNumero());
-        System.out.println("Vehículo: " + getVehiculo().getPatente() + " " + getVehiculo().getMarca() + " " + getVehiculo().getModelo());
-        System.out.println("Precio Diario: " + getVehiculo().getPrecioArriendo());
-        System.out.println("Fecha           Cliente          Días          A Pagar");
+        System.out.println("                      TICKET ARRIENDO DE VEHÍCULO");
+        System.out.println("");
+        System.out.println("                        Número de Arriendo: " + getNumero());
+        System.out.println("                        Vehículo          : " + getVehiculo().getPatente() + " " + getVehiculo().getMarca() + " " + getVehiculo().getModelo());
+        System.out.println("                        Precio Diario     : " + getVehiculo().getPrecioArriendo());
+        System.out.println("");
+        System.out.println("Fecha           Cliente                        Días            A Pagar");
         
         for(int i=0; i < 80; i++){
             System.out.print("-");
@@ -195,7 +209,7 @@ public class Arriendo {
         int totalAPagar = getVehiculo().getPrecioArriendo() * getDias();
 
         //getDias() * 
-        System.out.println(fechaFormateada + "    " + this.cliente.getCedula() + "/" + this.cliente.getNombre() + "         " + getDias() + " días" + "          $" + totalAPagar);
+        System.out.println(fechaFormateada + "      " + this.cliente.getCedula() + "/" + this.cliente.getNombre() + "       " + getDias() + " días" + "          $" + totalAPagar);
         for(int i=0; i < 80; i++){
             System.out.print("-");
         }
