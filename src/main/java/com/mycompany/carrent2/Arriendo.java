@@ -189,6 +189,11 @@ public class Arriendo {
         return this.devolucion.toString() + "\nCliente: " + cliente.toString();
     }
     
+    /**
+     * Obtiene el monto multiplicando el precio diario de arriendo por el 
+     * número de días
+     * @return 
+     */
     private int obtenerMonto(){
         return getVehiculo().getPrecioArriendo() * getDias();
     }
