@@ -17,21 +17,29 @@ public class Arriendo {
     private int dias;
     private Vehiculo vehiculo;
     private Cliente cliente;
-    // OJO QUE FALTA LA RELACIÓN CON EL CLIENTE - Resuelto.
     
+    /**
+     * Constructor
+     * @param numero
+     * @param fechaArriendo
+     * @param dias
+     * @param vehiculo
+     * @param cliente 
+     */
     public Arriendo(int numero, GregorianCalendar fechaArriendo, int dias, Vehiculo vehiculo, Cliente cliente) {
         setNumero(numero);
         setFechaArriendo(fechaArriendo);
         setDias(dias);
         setVehiculo(vehiculo);
         setCliente(cliente);
-        // LO NIEGO, YA QUE SI ES VÁLIDO EL MÉTODO ENTRARÁ A LA CONDICIÓN Y GATILLARÁ EL ERROR
-        // POR LO QUE AL NEGARLO, EL TRUE LLEGA A SER FALSE Y EL FALSE LLEGA A SER TRUE
-//        if (!validarArriendo()) {
-//            throw new IllegalArgumentException("VEHICULO Ó CLIENTE INVÁLIDOS");
-//        }
     }
     
+    /**
+     * Realiza el proceso de ingreso del arriendo.
+     * Si tanto el vehículo como el cliente estén correctos, se retorna true
+     * en caso contrario se lanza una exception.
+     * @return 
+     */
     public Boolean IngresarArriendo(){
         if (!validarArriendo()) {
             throw new IllegalArgumentException("VEHICULO Ó CLIENTE INVÁLIDOS. \nArriendo NO ingresado");
@@ -40,10 +48,17 @@ public class Arriendo {
         return true;
     }
     
+    /**
+     * Retorna el cliente
+     * @return 
+     */
     public Cliente getCliente(){
         return this.cliente;
     }
-    
+    /**
+     * Setea el cliente
+     * @param cliente 
+     */
     public void setCliente(Cliente cliente){
         this.cliente = cliente;
     }
@@ -56,10 +71,14 @@ public class Arriendo {
     }
 
     /**
-     * @param numero the numero to set
+     * Valida y setea el número del arriendo.
      */
     public void setNumero(int numero) {
-        this.numero = numero;
+        if (numero > 0){
+            this.numero = numero;
+        }else{
+            throw new IllegalArgumentException("El número no es válido, debe ser un valor positivo mayor que 0");
+        }
     }
 
     /**
