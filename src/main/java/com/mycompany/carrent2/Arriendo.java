@@ -150,9 +150,21 @@ public class Arriendo {
         
         return blResultado;
     }
+    /**
+     * Método encargado de generar la devolución
+     * @param v
+     * @param c
+     * @param fechaDevolucion
+     * @return 
+     */
+    public Boolean generarDevolucion(Vehiculo v, GregorianCalendar fechaDevolucion){
+        //Se debe de validar la fecha de devolución que sea mayor que la fecha de arriendo
+        setDevolucion(v, fechaDevolucion);
+        return true;
+    }
     
-    public void ingresarDevolucion(){
-        
+    public Devolucion setDevolucion(Vehiculo vehiculo, GregorianCalendar fechaDevolucion){
+        return (new Devolucion(vehiculo, fechaDevolucion));
     }
     
     /**
