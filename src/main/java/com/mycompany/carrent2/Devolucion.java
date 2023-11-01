@@ -4,6 +4,7 @@
  */
 package com.mycompany.carrent2;
 import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author xavie
@@ -53,5 +54,17 @@ public class Devolucion {
      */
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
+    }
+    
+    /**
+     * Sobreescribe el método toString para desplegar valores personalizados.
+     */
+    @Override
+    public String toString() {
+        SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy");
+        fmt.setCalendar(getFechaDevolucion());
+        String fechaFormateada = fmt.format(getFechaDevolucion().getTime());
+        return "Fecha Devolución: " + fechaFormateada + "\t" +
+                "Detalle del vehículo: " + getVehiculo();
     }
 }
