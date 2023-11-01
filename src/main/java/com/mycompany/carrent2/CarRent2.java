@@ -5,6 +5,7 @@
 
 package com.mycompany.carrent2;
 
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 /**
@@ -19,7 +20,7 @@ import java.util.GregorianCalendar;
 public class CarRent2 {
 
     public static void main(String[] args) {
-        
+        System.out.println("**********************************************************************************");
         //*************************** Arriendo 1 de forma correcta con su vehículo y cliente respectivo********************
         Vehiculo v = new Vehiculo("XX-YY-23", "KIA", "HGF", 2015);
         System.out.println("Vehículo generado: " + v);
@@ -49,29 +50,34 @@ public class CarRent2 {
         */
         GregorianCalendar fechaDevolucion = new GregorianCalendar();
         fechaDevolucion.add(fechaDevolucion.DAY_OF_MONTH, a1.getDias());
-        
-        System.out.println("Fecha devolucion (Fecha actual más los días que indicó al generar el arriendo) :" + fechaDevolucion.getTime());
+        SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy");
+        fmt.setCalendar(fechaDevolucion);
+        String fechaFormateada = fmt.format(fechaDevolucion.getTime());
+        System.out.println("Fecha devolucion 'Ingresada' (Fecha del arriendo más los días que indicó al generar el arriendo) :" + fechaFormateada);
         
         //Se procede con la validación y si es correcto, la devolución.
         a1.generarDevolucion(autoDevuelto, fechaDevolucion);
-        
+        //Se visualiza la devolución
+        System.out.println("Detalle de la devolución: "+ a1.getDevolucion());
         //Se genera el voucher o ticket
         a1.generarTicketDeArriendo();
-        System.out.println("**********************************************************************************");
+        System.out.println("");
         
-        //*************************** Arriendo 2 FALLIDO con su vehículo y/o cliente deshabilitado********************
-        Vehiculo v2 = new Vehiculo("XX-YY-24", "Toyota", "CROSS", 2023);
-        v2.setCondicion('M');
-        System.out.println("Vehículo generado: " + v2);
-        //Se genera una nueva instancia de un cliente
-        //Por defecto el nuevo cliente está vigente desde el constructor
-        Cliente c2 = new Cliente("22222222-2", "Jhon Titor 2");
-        c2.DeshabilitarCliente();
-        System.out.println("Cliente generado (deshabilitado): " + c2);
-        Arriendo a2 = new Arriendo(11, f, 5, v2, c2);
         
-        //Se ingresa el arriendo. O eso debería, pero se lanza una excepción porque el vehículo generado está en mantención. Línea 52
-        //Además el cliente está deshabilitado línea 57
-        a2.IngresarArriendo();
+//        //*************************** Arriendo 2 FALLIDO con su vehículo y/o cliente deshabilitado********************
+//        System.out.println("**********************************************************************************");
+//        Vehiculo v2 = new Vehiculo("XX-YY-24", "Toyota", "CROSS", 2023);
+//        v2.setCondicion('M');
+//        System.out.println("Vehículo generado: " + v2);
+//        //Se genera una nueva instancia de un cliente
+//        //Por defecto el nuevo cliente está vigente desde el constructor
+//        Cliente c2 = new Cliente("22222222-2", "Jhon Titor 2");
+//        c2.DeshabilitarCliente();
+//        System.out.println("Cliente generado (deshabilitado): " + c2);
+//        Arriendo a2 = new Arriendo(11, f, 5, v2, c2);
+//        
+//        //Se ingresa el arriendo. O eso debería, pero se lanza una excepción porque el vehículo generado está en mantención. Línea 52
+//        //Además el cliente está deshabilitado línea 57
+//        a2.IngresarArriendo();
     }
 }
