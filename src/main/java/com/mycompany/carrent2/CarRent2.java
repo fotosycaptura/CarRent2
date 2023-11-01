@@ -10,6 +10,11 @@ import java.util.GregorianCalendar;
 /**
  *
  * @author Tom
+ * Modificado por integrantes del grupo 2:
+ * Xavier Fuentes
+ * Carlos Anch
+ * Felipe González
+ * Sebastian Lantadilla
  */
 public class CarRent2 {
 

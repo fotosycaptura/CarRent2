@@ -7,6 +7,11 @@ import java.util.GregorianCalendar;
 /**
  *
  * @author xavie
+ * Grupo 2
+ * Xavier Fuentes
+ * Carlos Anch
+ * Felipe González
+ * Sebastian Lantadilla
  */
 public class Devolucion {
     private GregorianCalendar fechaDevolucion;

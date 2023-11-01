@@ -88,7 +88,7 @@ public class Cliente {
         this.vigente = vigente;
     }
     
-    /*
+    /**
     * Esta operación la ejecuta el gerente del local cuando el estime 
     * conveniente y lo único que debe hacer es dejar no vigente al cliente 
     * para que no pueda arrendar.
@@ -97,11 +97,13 @@ public class Cliente {
         this.vigente = false;
     }
     
+    /**
+     * Se encarga de obtener el dígito verificador de un rut.
+     * Se utiliza para obtenerlo - generarlo - o para la comparación en un if
+     * @param rut
+     * @return 
+     */
     private String ValidarDigitoVerificador(int rut)
-        /*
-         * Se encarga de obtener el dígito verificador de un rut
-         * Se utiliza para obtenerlo - generarlo - o para la comparación en un if
-         * */
         {
             int Digito;
             int Contador;
@@ -137,6 +139,9 @@ public class Cliente {
             return (RutDigito);
         }
     
+    /**
+     * Sobreescribe el método toString para desplegar valores personalizados.
+     */
     @Override
     public String toString() {
         return "Cédula: " + getCedula() + "\t" +

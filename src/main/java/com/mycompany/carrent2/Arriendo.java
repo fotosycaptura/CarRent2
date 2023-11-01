@@ -10,6 +10,11 @@ import java.text.SimpleDateFormat;
 /**
  *
  * @author Tom
+ * Modificado por integrantes del grupo 2:
+ * Xavier Fuentes
+ * Carlos Anch
+ * Felipe González
+ * Sebastian Lantadilla
  */
 public class Arriendo {
     private int numero; //Número del arriendo
