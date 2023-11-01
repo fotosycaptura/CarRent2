@@ -155,16 +155,18 @@ public class Arriendo {
     /**
      * Método encargado de generar la devolución
      * @param v
-     * @param c
      * @param fechaDevolucion
      * @return 
      */
     public Boolean generarDevolucion(Vehiculo v, GregorianCalendar fechaDevolucion){
         //Se debe de validar la fecha de devolución que sea mayor que la fecha de arriendo
-        //Se deve de validar que el vehículo a devolver corresponda al mismo con el que se inició el arriendo del mismo.
-        
-        setDevolucion(v, fechaDevolucion);
-        return true;
+        //Se debe de validar que el vehículo a devolver corresponda al mismo con el que se inició el arriendo del mismo.
+        if (v.getAnho() == vehiculo.getAnho() && v.getMarca().equals(vehiculo.getMarca()) && v.getModelo().equals(vehiculo.getModelo()) && v.getPatente().equals(vehiculo.getPatente())){
+            setDevolucion(v, fechaDevolucion);
+            return true;
+        }else{
+            return false;
+        }
     }
     /**
      * Encargado de setear una instancia de Devolucion
