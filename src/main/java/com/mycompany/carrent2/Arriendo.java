@@ -178,6 +178,7 @@ public class Arriendo {
         for(int i=0; i < 80; i++){
             System.out.print("=");
         }
+        System.out.println("");
         System.out.println("Ticket Arriendo de Vehículo");
         System.out.println("Número de Arriendo: " + getNumero());
         System.out.println("Vehículo: " + getVehiculo().getPatente() + " " + getVehiculo().getMarca() + " " + getVehiculo().getModelo());
@@ -206,5 +207,6 @@ public class Arriendo {
         for(int i=0; i < 80; i++){
             System.out.print("=");
         }
+        System.out.println("");
     }
 }
