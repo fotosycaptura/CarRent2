@@ -151,6 +151,10 @@ public class Arriendo {
         return blResultado;
     }
     
+    public void ingresarDevolucion(){
+        
+    }
+    
     /**
      * Se encarga de generar el voucher o ticket en pantalla
      */

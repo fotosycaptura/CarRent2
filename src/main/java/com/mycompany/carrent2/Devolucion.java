@@ -16,8 +16,17 @@ import java.util.GregorianCalendar;
 public class Devolucion {
     private GregorianCalendar fechaDevolucion;
     private Vehiculo vehiculo;
-    private Cliente cliente;
 
+    /**
+     * Constructor
+     * @param vehiculo
+     * @param fechaDevolucion
+     */
+    public Devolucion(Vehiculo vehiculo, GregorianCalendar fechaDevolucion){
+        this.vehiculo = vehiculo;
+        setFechaDevolucion(fechaDevolucion);
+    }
+    
     /**
      * @return the fechaDevolucion
      */
@@ -44,19 +53,5 @@ public class Devolucion {
      */
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
-    }
-
-    /**
-     * @return the cliente
-     */
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    /**
-     * @param cliente the cliente to set
-     */
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 }
