@@ -34,10 +34,14 @@ public class Arriendo {
     
     public Boolean IngresarArriendo(){
         if (!validarArriendo()) {
-            throw new IllegalArgumentException("VEHICULO Ó CLIENTE INVÁLIDOS");
+            throw new IllegalArgumentException("VEHICULO Ó CLIENTE INVÁLIDOS. \nArriendo NO ingresado");
         }
         
         return true;
+    }
+    
+    public Cliente getCliente(){
+        return this.cliente;
     }
     
     public void setCliente(Cliente cliente){
@@ -83,8 +87,12 @@ public class Arriendo {
      * @param dias the dias to set
      */
     public void setDias(int dias) {
-        // VALIDAR LA CANTIDAD DÍAS
-        this.dias = dias;
+        if (dias > 1 && dias < 10){
+            this.dias = dias;
+        }
+        else{
+            throw new IllegalArgumentException("Número de días inválidos. Debe ser mayor que 1 y menor que 10.");
+        }
     }
 
     /**
@@ -100,17 +108,26 @@ public class Arriendo {
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }
-    
+    /**
+     * Valida el arriendo del vehículo
+     * Valida la vigencia del cliente
+     * Si vehículo está Disponible y cliente Vigente
+     * Entonces se retorna true
+     * En caso contrario false
+     * @return 
+     */
     private boolean validarArriendo() {
-        // OJO VALIDAR LA VIGENCIA DEL CLIENTE
-        if (getVehiculo().getCondicion() != 'D') {
-            return false;
+        
+        Boolean blResultado = false;
+        //Se valida que la condición del vehículo sea D y que el cliente esté vigente
+        if (getVehiculo().getCondicion() == 'D' && getCliente().getVigente()) {
+            blResultado = true;
         }
         
-        return true;
+        return blResultado;
     }
     
-    public void GenerarTicketDeArriendo(){
+    public void generarTicketDeArriendo(){
         /*
         * Este método debe de imprimir el ticket 
         * de arriendo
