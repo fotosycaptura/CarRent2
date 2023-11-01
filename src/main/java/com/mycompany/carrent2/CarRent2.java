@@ -35,6 +35,7 @@ public class CarRent2 {
         // v.setCondicion('H');
         // GENERAMOS UNA NUEVA INSTANCIA DE ARRIENDO
         Arriendo a1 = new Arriendo(10, f, 5, v, c);
+        
         //se ingresa el arriendo
         a1.IngresarArriendo();
         System.out.println("Detalle del vehículo arrendado: " + a1.getVehiculo().toString());
@@ -84,20 +85,20 @@ public class CarRent2 {
             System.out.println("No se pudo realizar la devolución. Compruebe que sea efectivamente el mismo vehículo.");
         }
         
-//        //*************************** Arriendo 2 FALLIDO con su vehículo y/o cliente deshabilitado********************
-//        System.out.println("**********************************************************************************");
-//        Vehiculo v2 = new Vehiculo("XX-YY-24", "Toyota", "CROSS", 2023);
-//        v2.setCondicion('M');
-//        System.out.println("Vehículo generado (asignado a mantención): " + v2);
-//        //Se genera una nueva instancia de un cliente
-//        //Por defecto el nuevo cliente está vigente desde el constructor
-//        Cliente c2 = new Cliente("22222222-2", "Jhon Titor 2");
-//        c2.DeshabilitarCliente();
-//        System.out.println("Cliente generado (deshabilitado): " + c2);
-//        Arriendo a2 = new Arriendo(11, f, 5, v2, c2);
-//        
-//        //Se ingresa el arriendo. O eso debería, pero se lanza una excepción porque el vehículo generado está en mantención. Línea 52
-//        //Además el cliente está deshabilitado línea 57
-//        a2.IngresarArriendo();
+        //*************************** Arriendo 2 FALLIDO con su vehículo y/o cliente deshabilitado********************
+        System.out.println("**********************************************************************************");
+        Vehiculo v2 = new Vehiculo("XX-YY-24", "Toyota", "CROSS", 2023);
+        v2.setCondicion('M');
+        System.out.println("Vehículo generado (asignado a mantención): " + v2);
+        //Se genera una nueva instancia de un cliente
+        //Por defecto el nuevo cliente está vigente desde el constructor
+        Cliente c2 = new Cliente("22222222-2", "Jhon Titor 2");
+        c2.DeshabilitarCliente();
+        System.out.println("Cliente generado (deshabilitado): " + c2);
+        Arriendo a2 = new Arriendo(11, f, 5, v2, c2);
+        
+        //Se ingresa el arriendo. O eso debería, pero se lanza una excepción porque el vehículo generado está en mantención. Línea 52
+        //Además el cliente está deshabilitado línea 57
+        a2.IngresarArriendo();
     }
 }

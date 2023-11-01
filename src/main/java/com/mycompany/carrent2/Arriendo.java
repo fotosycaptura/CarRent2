@@ -55,6 +55,7 @@ public class Arriendo {
         
         //La validación es correcta, por lo que se ingresa cambia el estado del vehículo a Arrendado
         vehiculo.setCondicion('A');
+        System.out.println("Se realizó el ingreso del arriendo correctamente");
         
         return true;
     }
