@@ -24,13 +24,12 @@ public class CarRent2 {
         
         // GENERO UNA INSTANCIA DE FECHA 
         GregorianCalendar f = new GregorianCalendar();
-        
         // DESCOMENTAR SI DESEA GATILLAR EL ERROR DE VALIDACIÓN DE CONDICIÓN
         // v.setCondicion('H');
         
         // GENERAMOS UNA NUEVA INSTANCIA DE ARRIENDO
         Arriendo a = new Arriendo(10, f, 5, v, c);
-        System.out.println(a.getVehiculo().toString());
+        a.GenerarTicketDeArriendo();
                
         // DESCOMENTAR SI DESEA GATILLAR LA VALIDACIÓN DEL ARRIENDO
         // SE INGREDA UN VEHÍCULO QUE NO ESTÉ DISPONIBLE

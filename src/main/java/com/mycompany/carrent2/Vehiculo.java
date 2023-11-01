@@ -26,6 +26,7 @@ public class Vehiculo {
         setModelo(modelo);
         setAnho(anho);
         setCondicion('D');
+        setPrecioArriendo(45000);
     }
 
     /**

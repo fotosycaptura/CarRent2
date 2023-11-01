@@ -5,6 +5,7 @@
 package com.mycompany.carrent2;
 
 import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -23,14 +24,18 @@ public class Arriendo {
         setFechaArriendo(fechaArriendo);
         setDias(dias);
         setVehiculo(vehiculo);
-        
+        setCliente(cliente);
         // LO NIEGO, YA QUE SI ES VÁLIDO EL MÉTODO ENTRARÁ A LA CONDICIÓN Y GATILLARÁ EL ERROR
         // POR LO QUE AL NEGARLO, EL TRUE LLEGA A SER FALSE Y EL FALSE LLEGA A SER TRUE
         if (!validarArriendo()) {
             throw new IllegalArgumentException("VEHICULO Ó CLIENTE INVÁLIDOS");
         }
     }
-
+    
+    public void setCliente(Cliente cliente){
+        this.cliente = cliente;
+    }
+    
     /**
      * @return the numero
      */
@@ -95,5 +100,36 @@ public class Arriendo {
         }
         
         return true;
+    }
+    
+    public void GenerarTicketDeArriendo(){
+        /*
+        * Este método debe de imprimir el ticket 
+        * de arriendo
+        */
+        System.out.println("Ticket Arriendo de Vehículo");
+        System.out.println("Número de Arriendo: " + getNumero());
+        System.out.println("Vehículo: " + getVehiculo().getPatente() + " " + getVehiculo().getMarca() + " " + getVehiculo().getModelo());
+        System.out.println("Precio Diario: " + getVehiculo().getPrecioArriendo());
+        System.out.println("Fecha           Cliente          Días          A Pagar");
+        
+        for(int i=0; i < 80; i++){
+            System.out.print("-");
+        }
+        System.out.println("");
+        SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy");
+        fmt.setCalendar(getFechaArriendo());
+        String fechaFormateada = fmt.format(getFechaArriendo().getTime());
+        int totalAPagar = getVehiculo().getPrecioArriendo() * getDias();
+
+        //getDias() * 
+        System.out.println(fechaFormateada + "    " + this.cliente.getCedula() + "/" + this.cliente.getNombre() + "         " + getDias() + " días" + "          $" + totalAPagar);
+        for(int i=0; i < 80; i++){
+            System.out.print("-");
+        }
+        System.out.println("");
+        System.out.println("");
+        System.out.println("                                                _____________");
+        System.out.println("                                                Firma Cliente");
     }
 }
