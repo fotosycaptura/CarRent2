@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
  * Carlos Anch
  * Felipe González
  * Sebastian Lantadilla
+ * Ivan Rojas
  */
 public class Devolucion {
     private GregorianCalendar fechaDevolucion;

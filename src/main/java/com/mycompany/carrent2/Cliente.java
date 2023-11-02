@@ -7,6 +7,11 @@ import java.util.*;
 /**
  *
  * @author xavie
+ * Xavier Fuentes
+ * Carlos Anch
+ * Felipe González
+ * Sebastian Lantadilla
+ * Ivan Rojas
  */
 public class Cliente {
     private String cedula;

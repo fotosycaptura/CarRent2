@@ -6,8 +6,7 @@ package com.mycompany.carrent2;
 
 import java.util.GregorianCalendar;
 import java.text.SimpleDateFormat;
-import java.util.HashSet;
-import java.util.Set;
+
 
 /**
  *
@@ -17,6 +16,7 @@ import java.util.Set;
  * Carlos Anch
  * Felipe González
  * Sebastian Lantadilla
+ * Ivan Rojas
  */
 public class Arriendo {
     private int numero; //Número del arriendo

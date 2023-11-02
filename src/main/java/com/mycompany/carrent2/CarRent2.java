@@ -17,6 +17,7 @@ import java.util.GregorianCalendar;
  * Carlos Anch
  * Felipe González
  * Sebastian Lantadilla
+ * Ivan Rojas
  */
 public class CarRent2 {
 
@@ -109,7 +110,7 @@ public class CarRent2 {
         Vehiculo autoDevueltoConFallas = new Vehiculo("XX-YY-25", "KIAdo", "HGF", 2017);
         fechaDevolucion = new GregorianCalendar();
         fechaDevolucion.add(fechaDevolucion.DAY_OF_MONTH, a2.getDias());
-       
+        System.out.println("Vehículo que se intenta devolver: " + autoDevueltoConFallas.toString());
         //Se procede con la validación y si es correcto, la devolución.
         if (a2.generarDevolucion(autoDevueltoConFallas, fechaDevolucion)){
             System.out.println("La devolución se realizó correctamente");
